@@ -1,0 +1,25 @@
+{
+  "name": "practica_frontend_ninja",
+  "version": "1.0.0",
+  "description": "Práctica FronEnd Ninja Keecoding Web Master Development Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmpinero/practica_frontend_ninja.git"
+  },
+  "author": "Daniel Martínez Piñero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmpinero/practica_frontend_ninja/issues"
+  },
+  "homepage": "https://github.com/dmpinero/practica_frontend_ninja#readme",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.3.2"
+  }
+}

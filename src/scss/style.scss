@@ -1,0 +1,58 @@
+@import "reset"; 		// Idéntico comportamiento en todos los navegadores
+@import "clearfix"; 	// Estilos para clearfix
+@import "https://fonts.googleapis.com/css?family=Lato:400,700'"; // Google fonts
+@import "variables"; 	// Variables de la aplicación
+
+/* mobile first. Comenzamos con el dispositivo más pequeño */
+body {
+	margin: 10px;
+}
+
+header,
+article {
+	border: 1px solid red;
+	margin-top: 10px;
+
+}
+
+// Cabecera
+.cabecera {
+	form,
+	.nombre-app,
+	.acceso,
+	.registro {
+		display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
+	}
+
+	.cabecera-elemento {
+		display: none; // Ocultar elementos de la cabecera
+	}
+
+	.logo {
+		float: right;
+	}
+
+	.buscador {
+		display: none; // Ocultar el buscador
+	}
+}
+
+// Pié de página
+.pie {
+	margin-top: 20px;
+	
+	.nombre-app,
+	.subir {
+		display: inline-block;	
+	}
+}
+
+/* Tablet */
+@media all and (min-width: 768px) {
+	
+}
+
+/* Desktop */
+@media all and (min-width: 1100px) {
+	
+}
