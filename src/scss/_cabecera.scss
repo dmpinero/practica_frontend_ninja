@@ -1,0 +1,55 @@
+/******************* ESTILOS CABECERA *********************/
+.navigation {
+  list-style: none;
+  margin:10px;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.cabecera {
+	margin-bottom: 30px;
+
+	form,
+	.nombre-app,
+	.acceso,
+	.registro,
+	.autor-comentarios {
+		display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
+	}
+
+	.ion-planet {
+		font-size: 250%; // Logotipo al 250%
+	}	
+
+	.nombre-app {
+		font-size: $font-size-large;
+		color: $logo-color;
+	}	
+
+	.acceso,
+	.registro {
+		font-size: $font-size-small;
+		color: $logo-color;
+	}	
+
+	// Ocultar estos elementos de la cabecera en versión mobile
+	.cabecera-elemento,
+	.acceso,
+	.registro,
+	.buscador {
+		display: none;
+	}	
+
+	.menu {
+		font-size:250%;
+		color: $logo-color;
+	}
+}
+/******************* ESTILOS CABECERA *********************/

@@ -1,0 +1,39 @@
+/******************* ESTILOS ARTICULO *********************/
+.articulo-foto-autor {
+	border-radius: 50%;
+	float: left;
+	margin-right: 5px;
+}
+
+.articulo-autor-nombre {
+	color: $articulo-autor-nombre-color;
+	margin-bottom: 3px;
+}
+
+.autor-fecha-publicacion {
+	margin-bottom: 15px;
+}
+
+.articulo-titulo {
+	font-size: $font-size-large;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: $articulo-titulo;
+}
+
+.articulo-parrafo-resumen {
+	text-align: justify;
+}
+
+.autor-me-gusta,
+.autor-comentarios {
+	display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
+	margin: 10px 0px;
+}
+
+.ion-person
+{
+	font-size:250%;
+	//color: $logo-color;
+}
+/******************* ESTILOS ARTICULO *********************/

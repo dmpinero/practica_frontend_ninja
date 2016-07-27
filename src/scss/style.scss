@@ -2,50 +2,40 @@
 @import "clearfix"; 	// Estilos para clearfix
 @import "https://fonts.googleapis.com/css?family=Lato:400,700'"; // Google fonts
 @import "variables"; 	// Variables de la aplicación
+@import "cabecera";     // Estilos para la cabecera
+@import "articulo";     // Estilos para los artículos
+@import "paginacion";     // Estilos para la paginación
+@import "footer";       // Estilos para el footer
 
-/* mobile first. Comenzamos con el dispositivo más pequeño */
+/******************* ESTILOS COMUNES *********************/
 body {
-	margin: 10px;
+
+	font-family: $main-font-family;
+	font-size: $font-size-normal;
 }
 
 header,
 article {
-	border: 1px solid red;
 	margin-top: 10px;
-
 }
 
-// Cabecera
-.cabecera {
-	form,
-	.nombre-app,
-	.acceso,
-	.registro {
-		display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
-	}
-
-	.cabecera-elemento {
-		display: none; // Ocultar elementos de la cabecera
-	}
-
-	.logo {
-		float: right;
-	}
-
-	.buscador {
-		display: none; // Ocultar el buscador
-	}
+article {
+	border-bottom: 1px solid $color-primary-3;
+	margin-bottom: 40px;
 }
 
-// Pié de página
-.pie {
-	margin-top: 20px;
-	
-	.nombre-app,
-	.subir {
-		display: inline-block;	
-	}
+img {
+	max-width: 100%;
 }
+
+section {
+	margin: 10px;
+}
+
+.logo {
+	color: $logo-color;
+}
+/******************* ESTILOS COMUNES *********************/
 
 /* Tablet */
 @media all and (min-width: 768px) {
