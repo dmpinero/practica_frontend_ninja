@@ -64,7 +64,7 @@ article {
 
 article {
   border-bottom: 1px solid #B95E0D;
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
 
 img {
   max-width: 100%; }
@@ -95,7 +95,8 @@ section {
   justify-content: space-between; }
 
 .cabecera {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  border-bottom: 5px solid #FFB878; }
   .cabecera form,
   .cabecera .nombre-app,
   .cabecera .acceso,
@@ -148,23 +149,20 @@ section {
   display: inline-block;
   margin: 10px 0px; }
 
+.autor-comentarios,
 .articulo-me-gusta {
-  font-size: 150%;
+  font-size: 110%;
   color: #00ab6b; }
 
 .ion-person {
   font-size: 250%; }
 
-.autor-me-gusta,
-.autor-comentarios {
+.autor-me-gusta {
   display: inline-block;
   margin: 10px 0px; }
 
-.ion-person {
-  font-size: 250%; }
-
-#articulo1-me-gusta {
-  display: inline-block; }
+.autor-comentarios {
+  float: right; }
 
 /******************* ESTILOS ARTICULO *********************/
 .paginacion {

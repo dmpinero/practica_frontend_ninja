@@ -15,13 +15,14 @@
 
 .cabecera {
 	margin-bottom: 30px;
+	border-bottom: 5px solid $color-primary-1;
 
 	form,
 	.nombre-app,
 	.acceso,
 	.registro,
 	.autor-comentarios {
-		display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
+		display: inline-block; 
 	}
 
 	.ion-planet {

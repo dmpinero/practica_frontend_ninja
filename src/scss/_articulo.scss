@@ -31,8 +31,9 @@
 	margin: 10px 0px;
 }
 
+.autor-comentarios,
 .articulo-me-gusta {
-	font-size: 150%;
+	font-size: 110%;
 	color: $articulo-me-gusta;
 }
 
@@ -41,18 +42,12 @@
 	font-size:250%;
 }
 
-.autor-me-gusta,
-.autor-comentarios {
-	display: inline-block; // El nombre de la app se visualiza en la misma línea que el resto de los elementos del menú
+.autor-me-gusta {
+	display: inline-block; 
 	margin: 10px 0px;
 }
 
-.ion-person
-{
-	font-size:250%;
-}
-
-#articulo1-me-gusta {
-	display: inline-block;
+.autor-comentarios {
+	float: right;
 }
 /******************* ESTILOS ARTICULO *********************/
