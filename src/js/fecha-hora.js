@@ -1,4 +1,5 @@
 var $ = require('jquery');
+//console.log("Cargado fecha-hora.js");
 
 var moment = require('moment');
 var dias_semana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
