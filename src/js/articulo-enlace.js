@@ -8,14 +8,32 @@ $('.articulo').on("click", function() {
 // Recuperar el número de "Me gusta" de cada elemento al cargar
 // la página
 $(document).ready(function() {   
-   var meGustaElemento1 = getMegusta(null);
-   $('#articulo1-me-gusta').text(meGustaElemento1);
+	for (i=1; i<11; i++)
+	{
+		var id_articulo = 'articulo' + i + '-me-gusta';
+		var meGustaElemento = getMegusta(id_articulo);	
+		$('#' + id_articulo).text(meGustaElemento);
+	}
+   //var meGustaElemento = getMegusta('articulo1-me-gusta');
+   //$('#articulo1-me-gusta').text(meGustaElemento);
  });
 
+$('body').click(function(event) {
+	console.log("Pulsado en " + event.target.id);
+	//console.log("Más info:" + $(event.target));
+	var total_me_gusta = Number(localStorage.getItem(event.target.id)) + 1;
+	console.log("total_me_gusta para elemento " + event.target.id + " es " + total_me_gusta);
+	
+	$('#' + event.target.id).text(total_me_gusta); // Recargar div del elemento
+	//$('#articulo1-me-gusta').text(total_me_gusta); // Esto funciona
+
+	localStorage.setItem(event.target.id, total_me_gusta);
+});
 
 // Pulsando en "Me gusta" se aumenta el número 
-$('.articulo1-me-gusta').on("click", function() {
-	console.log("Este artículo me gusta");
+/*
+$('.articulo1-me-gusta').on("click", function(event) {
+	console.log("El artículo "+ event.target.id + " me gusta");
 	
 	var meGustaElemento1 = getMegusta(null);
 	if (meGustaElemento1 != -1) // En lavegador soporta Web Storage
@@ -26,6 +44,7 @@ $('.articulo1-me-gusta').on("click", function() {
 	}
 		
 });
+*/
 
 // Función que recupera el número de "Me gusta" de un elemento
 function getMegusta(elemento)
@@ -34,8 +53,8 @@ function getMegusta(elemento)
 		console.log("Este navegador soporta Web Storage");
 
 		// Obtener los "Me gusta" almacenados para el artículo
-		var total_me_gusta = Number(localStorage.getItem("articulo1-me-gusta"));
-		console.log("Este artículo tiene " + total_me_gusta + " me gusta");
+		var total_me_gusta = Number(localStorage.getItem(elemento));
+		console.log("Este artículo " + elemento + " tiene " + total_me_gusta + " me gusta");
 
 		return total_me_gusta;
 	}	
