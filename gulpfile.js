@@ -14,7 +14,7 @@ gulp.task("default", ["concat-js", "compile-sass"], function(){
 	// iniciar BrowserSync
 	browserSync.init({
 		server: "./", // levanta servidor web en la carpeta actual
-		browser: "google chrome"
+		browser: "google chrome" // Navegador web por defecto
 	});
 
 	// observa cambios en archivos SASS y ejecuta la tarea de compilación
