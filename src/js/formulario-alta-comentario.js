@@ -1,5 +1,6 @@
 var $ = require('jquery');
-console.log("Cargado formulario-alta-comentario.js");
+var utils = require('./utils');	// Escapado de texto
+//console.log("Cargado formulario-alta-comentario.js");
 
 
 // Validar textarea (Máximo de 120 palabras)
@@ -52,7 +53,7 @@ $('#formulario-alta-comentario').on("submit", function() {
 			nombre: $("#nombre").val(),
 			apellidos:  $("#apellidos").val(),
 			email: $("#email").val(),
-			comentario: $("#comentario").val()
+			comentario: utils.escapeHTML($("#comentario").val()) // Escapamos caracteres especiales
 		};
 
 		// Petición Ajax para guardar la información en el backend
