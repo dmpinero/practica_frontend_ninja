@@ -63,7 +63,7 @@ $('#formulario-alta-comentario').on("submit", function() {
 			beforeSend: function() { // Ejecución antes de la petición Ajax
 				$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
 				// Cambiar texto del botón y deshabilitar botón
-				$('.formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
+				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
 			},
 			success: function (response) { // Función callback cuando la petición sea exitosa
 				//console.log ("SUCCESS", response);
@@ -77,7 +77,7 @@ $('#formulario-alta-comentario').on("submit", function() {
 				$(inputs).attr("disabled", false); // Habilitar todos los inputs
 				$(textareas).attr("disabled", false); // Habilitar todos los textarea
 				// Cambiar texto del botón y habilitar botón
-				$('.formulario-alta-comentario button').text("Enviar").attr("disabled", false);
+				$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);
 			}		
 		});
 
