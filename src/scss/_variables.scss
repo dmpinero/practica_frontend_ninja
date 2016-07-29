@@ -16,6 +16,7 @@ $color-primary-4: #924500;
 $color-primary-5: #555;		// Gris oscuro
 $color-primary-6: #f4f4f4;  // Gris claro
 $color-primary-7: #00ab6b;  // Verde
+$color-rojo: 	  #ff0000;  // Rojo
 
 // Paleta de colores
 $logo-color: $color-primary-3;
@@ -24,3 +25,8 @@ $articulo-titulo: $color-primary-0;
 $articulo-me-gusta: $color-primary-7;
 $footer-background-color: $color-primary-5;
 $numero-comentarios-color: $color-primary-7;
+
+// Número de palabras restantes en el comentario
+$cien-o-mas-palabras: $color-primary-7;
+$menos-cien-palabras: $color-primary-0;
+$menos-diez-palabras: $color-rojo;

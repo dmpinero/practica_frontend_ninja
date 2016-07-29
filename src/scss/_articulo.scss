@@ -1,4 +1,8 @@
 /******************* ESTILOS ARTICULO *********************/
+.articulo {
+	margin-top: 40px;
+}
+
 .articulo-foto-autor {
 	border-radius: 50%;
 	float: left;
@@ -49,5 +53,19 @@
 
 .autor-comentarios {
 	float: right;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+/* FORMULARIO ALTA DE COMENTARIO */
+/* ------------------------------------------------------------------------------------------ */
+.cien-o-mas-palabras {
+	color: $cien-o-mas-palabras;
+}
+.menos-cien-palabras {
+	color: $menos-cien-palabras;
+}
+
+.menos-diez-palabras {
+	color: $menos-diez-palabras;
 }
 /******************* ESTILOS ARTICULO *********************/

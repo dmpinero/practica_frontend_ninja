@@ -13,7 +13,8 @@ var jsFiles = ["src/js/*.js", "src/js/**/*.js"];
 gulp.task("default", ["concat-js", "compile-sass"], function(){
 	// iniciar BrowserSync
 	browserSync.init({
-		server: "./", // levanta servidor web en la carpeta actual
+		//server: "./", // levanta servidor web en la carpeta actual
+		proxy: "127.0.0.1:8000", // Actúa como proxy enviando las peticiones a SparREST
 		browser: "google chrome" // Navegador web por defecto
 	});
 

@@ -34,4 +34,41 @@ section {
 .italica {
 	font-style: italic;
 }
+
+/* ------------------------------------------------------------------------------------------ */
+/* COMPONENTES REUSABLES */
+/* ------------------------------------------------------------------------------------------ */
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+	margin-top: 30px;
+    margin-bottom: 30px;
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.enviar-formulario {
+    border: 1px solid #e67e22;
+    background-color: #e67e22; /* Color de fondo CARROT de www.flatuicolors.com */
+    color: #fff;
+    margin-right: 15px;
+    display: inline-block; /* Permite establecer padding y margin como si fueran elementos de tipo block */
+    padding: 5px 15px;
+    border-radius: 200px;
+}
 /******************* ESTILOS COMUNES *********************/

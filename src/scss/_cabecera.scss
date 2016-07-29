@@ -1,7 +1,7 @@
 /******************* ESTILOS CABECERA *********************/
 .navigation {
   list-style: none;
-  margin:10px;
+  margin: 10px;
 
   display: -webkit-box;
   display: -moz-box;
@@ -14,7 +14,6 @@
 }
 
 .cabecera {
-	margin-bottom: 30px;
 	border-bottom: 5px solid $color-primary-1;
 
 	form,
@@ -38,6 +37,7 @@
 	.registro {
 		font-size: $font-size-small;
 		color: $logo-color;
+		float: left;
 	}	
 
 	// Ocultar estos elementos de la cabecera en versión mobile
@@ -45,7 +45,7 @@
 	.acceso,
 	.registro,
 	.buscador {
-		display: none;
+		display: block;
 	}	
 
 	.menu {
