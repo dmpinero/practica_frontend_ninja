@@ -51,9 +51,9 @@ $('#formulario-alta-comentario').on("submit", function() {
 
 		// Comentario a crear
 		var comentario = {
-			nombre: $("#nombre").val(),
-			apellidos:  $("#apellidos").val(),
-			email: $("#email").val(),
+			nombre: utils.escapeHTML($("#nombre").val()),
+			apellidos:  utils.escapeHTML($("#apellidos").val()),
+			email: utils.escapeHTML($("#email").val()),
 			comentario: utils.escapeHTML($("#comentario").val()) // Escapamos caracteres especiales
 		};
 
