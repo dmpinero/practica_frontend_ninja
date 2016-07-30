@@ -2,4 +2,5 @@ require('./articulo-enlace'); 			 // Hiperenlace a página detalle-articulo.html
 require('./fecha-hora');	  			 // Cálculo de fecha y hora
 require('./formulario-alta-comentario'); // Formulario para alta de comentarios
 require('./web-storage'); 				 // Recuperación y almacenamiento de elementos "Me gusta"
-require('./comentarios-carga');			 // Carga de comentarios
+//require('./comentarios-carga');			 // Carga de comentarios
+require('./init');		   				 // Inicialización de módulos

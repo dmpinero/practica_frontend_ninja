@@ -14275,8 +14275,9 @@ require('./articulo-enlace'); 			 // Hiperenlace a página detalle-articulo.html
 require('./fecha-hora');	  			 // Cálculo de fecha y hora
 require('./formulario-alta-comentario'); // Formulario para alta de comentarios
 require('./web-storage'); 				 // Recuperación y almacenamiento de elementos "Me gusta"
-require('./comentarios-carga');			 // Carga de comentarios
-},{"./articulo-enlace":4,"./comentarios-carga":5,"./fecha-hora":6,"./formulario-alta-comentario":7,"./web-storage":9}],4:[function(require,module,exports){
+//require('./comentarios-carga');			 // Carga de comentarios
+require('./init');		   				 // Inicialización de módulos
+},{"./articulo-enlace":4,"./fecha-hora":6,"./formulario-alta-comentario":7,"./init":8,"./web-storage":10}],4:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado articulo-enlace.js");
 
@@ -14288,33 +14289,40 @@ $('.articulo').on("click", function() {
 // Pulsando en el número de comentarios lleva a la lista
 // de comentarios del detalle del artículo
 $('.autor-comentarios').on("click", function() {
-	window.location.href = 'detalle_articulo.html#comentarios';
+	window.location.href = 'detalle_articulo.html#articulo-comentarios';
 });
 },{"jquery":1}],5:[function(require,module,exports){
 var $ = require('jquery');
+
 console.log("Cargado comentarios-carga.js");
 
-$.ajax({
-	url: "/api/comentarios/",
-	success: function(response) {
-		console.log("Comentarios", response);
-		for (var i in response) {
-            var comentario = response[i];
+module.exports = {
+	load: function() {
+		$.ajax({
+			cache: true,
+			url: "/api/comentarios/",
+			success: function(response) {
+				console.log("Comentarios", response);
+				$('articulo-comentarios').html('');
+				for (var i in response) {
+		            var comentario = response[i];
 
-            var html = '<article class="articulo-comentario">';
-            html += '<div class="articulo-autor-nombre">' + comentario.nombre + ' ' + comentario.apellidos + ' ' + '(' + comentario.email + ')' + '</div>';
-            html += '<div class="articulo-parrafo-resumen">' + comentario.comentario + '</div>' 
-            html += '</article>';
-            $('.articulo-comentarios').append(html);
-        }		
+		            var html = '<article class="articulo-comentario">';
+		            html += '<div class="articulo-autor-nombre">' + comentario.nombre + ' ' + comentario.apellidos + ' ' + '(' + comentario.email + ')' + '</div>';
+		            html += '<div class="articulo-parrafo-resumen">' + comentario.comentario + '</div>' 
+		            html += '</article>';
+		            $('.articulo-comentarios').append(html);
+		        }		
 
-        // Actualizo el literal del número de comentarios con el número de elementos almacenados
-       $('#comentarios-detalle-numero')[0].innerHTML = response.length;
-	},
-	error: function(response) {
-		console.log("ERROR", response);
+		        // Actualizo el literal del número de comentarios con el número de elementos almacenados
+		       $('#comentarios-detalle-numero')[0].innerHTML = response.length;
+			},
+			error: function(response) {
+				console.log("ERROR", response);
+			}
+		});
 	}
-});
+}
 },{"jquery":1}],6:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado fecha-hora.js");
@@ -14429,6 +14437,7 @@ function calcula_diferencia(fecha_hora_inicio)
 },{"jquery":1,"moment":2}],7:[function(require,module,exports){
 var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
+var comentarios = require('./comentarios-carga');
 //console.log("Cargado formulario-alta-comentario.js");
 
 
@@ -14496,9 +14505,13 @@ $('#formulario-alta-comentario').on("submit", function() {
 				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
 			},
 			success: function (response) { // Función callback cuando la petición sea exitosa
-				//console.log ("SUCCESS", response);
+				console.log ("SUCCESS", response);
 				$("form")[0].reset(); // Limpiar formulario
 				$("nombre").focus(); // Poner foco en el campo nombre
+
+				// Recargamos los comentarios
+				console.log ("Voy a recargar comentarios", response);
+				comentarios.load();
 			},
 			error: function (response) {
 				console.log ("ERROR", response);	
@@ -14515,7 +14528,9 @@ $('#formulario-alta-comentario').on("submit", function() {
 	}
 	
 });
-},{"./utils":8,"jquery":1}],8:[function(require,module,exports){
+},{"./comentarios-carga":5,"./utils":9,"jquery":1}],8:[function(require,module,exports){
+
+},{}],9:[function(require,module,exports){
 var $ = require('jquery');
 
 module.exports = {
@@ -14523,7 +14538,7 @@ module.exports = {
         return $('<div>').text(str).html();
     }
 }
-},{"jquery":1}],9:[function(require,module,exports){
+},{"jquery":1}],10:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado web-storage.js");
 

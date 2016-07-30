@@ -9,5 +9,5 @@ $('.articulo').on("click", function() {
 // Pulsando en el número de comentarios lleva a la lista
 // de comentarios del detalle del artículo
 $('.autor-comentarios').on("click", function() {
-	window.location.href = 'detalle_articulo.html#comentarios';
+	window.location.href = 'detalle_articulo.html#articulo-comentarios';
 });

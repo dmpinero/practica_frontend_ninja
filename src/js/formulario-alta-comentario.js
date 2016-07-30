@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
+var comentarios = require('./comentarios-carga');
 //console.log("Cargado formulario-alta-comentario.js");
 
 
@@ -67,9 +68,13 @@ $('#formulario-alta-comentario').on("submit", function() {
 				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
 			},
 			success: function (response) { // Función callback cuando la petición sea exitosa
-				//console.log ("SUCCESS", response);
+				console.log ("SUCCESS", response);
 				$("form")[0].reset(); // Limpiar formulario
 				$("nombre").focus(); // Poner foco en el campo nombre
+
+				// Recargamos los comentarios
+				console.log ("Voy a recargar comentarios", response);
+				comentarios.load();
 			},
 			error: function (response) {
 				console.log ("ERROR", response);	
