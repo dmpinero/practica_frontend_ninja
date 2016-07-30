@@ -14275,9 +14275,8 @@ require('./articulo-enlace'); 			 // Hiperenlace a página detalle-articulo.html
 require('./fecha-hora');	  			 // Cálculo de fecha y hora
 require('./formulario-alta-comentario'); // Formulario para alta de comentarios
 require('./web-storage'); 				 // Recuperación y almacenamiento de elementos "Me gusta"
-//require('./comentarios-carga');			 // Carga de comentarios
-require('./init');		   				 // Inicialización de módulos
-},{"./articulo-enlace":4,"./fecha-hora":6,"./formulario-alta-comentario":7,"./init":8,"./web-storage":10}],4:[function(require,module,exports){
+require('./web-storage-events');		 // Eventos de web-storage
+},{"./articulo-enlace":4,"./fecha-hora":6,"./formulario-alta-comentario":7,"./web-storage":10,"./web-storage-events":9}],4:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado articulo-enlace.js");
 
@@ -14327,7 +14326,7 @@ module.exports = {
 		});
 	}
 }
-},{"./utils":9,"jquery":1}],6:[function(require,module,exports){
+},{"./utils":8,"jquery":1}],6:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado fecha-hora.js");
 
@@ -14532,9 +14531,7 @@ $('#formulario-alta-comentario').on("submit", function() {
 	}
 	
 });
-},{"./comentarios-carga":5,"./utils":9,"jquery":1}],8:[function(require,module,exports){
-
-},{}],9:[function(require,module,exports){
+},{"./comentarios-carga":5,"./utils":8,"jquery":1}],8:[function(require,module,exports){
 var $ = require('jquery');
 
 module.exports = {
@@ -14542,6 +14539,18 @@ module.exports = {
         return $('<div>').text(str).html();
     }
 }
+},{"jquery":1}],9:[function(require,module,exports){
+var $ = require('jquery');
+
+// Detectar pulsación sobre "Me gusta" en un artículo
+$('.articulo-me-gusta').on("click", function(event) {
+	console.log("Pulsado en " + event.target.id);
+	var total_me_gusta = Number(localStorage.getItem(event.target.id)) + 1;
+	//console.log("total_me_gusta para elemento " + event.target.id + " es " + total_me_gusta);
+		
+	$('#' + event.target.id).text(total_me_gusta); // Recargar div del elemento
+	localStorage.setItem(event.target.id, total_me_gusta); // Actualizar Web Storage
+});
 },{"jquery":1}],10:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado web-storage.js");
@@ -14556,25 +14565,6 @@ $(document).ready(function() {
 		$('#' + id_articulo).text(meGustaElemento);
 	}
  });
-
-$('body').click(function(event) {
-	//console.log("Pulsado en " + event.target.id);
-
-	var meGusta_patron = "-me-gusta";
-	var expreg = new RegExp(meGusta_patron);
-	
-	var encajaMegusta = expreg.test(event.target.id);
-	//console.log("Encaja:" + encaja);
-
-	if (encajaMegusta)
-	{
-		var total_me_gusta = Number(localStorage.getItem(event.target.id)) + 1;
-		//console.log("total_me_gusta para elemento " + event.target.id + " es " + total_me_gusta);
-		
-		$('#' + event.target.id).text(total_me_gusta); // Recargar div del elemento
-		localStorage.setItem(event.target.id, total_me_gusta); // Actualizar Web Storage
-	}
-});
 
 // Función que recupera el número de "Me gusta" de un elemento
 function getMegusta(elemento)

@@ -12,25 +12,6 @@ $(document).ready(function() {
 	}
  });
 
-$('body').click(function(event) {
-	//console.log("Pulsado en " + event.target.id);
-
-	var meGusta_patron = "-me-gusta";
-	var expreg = new RegExp(meGusta_patron);
-	
-	var encajaMegusta = expreg.test(event.target.id);
-	//console.log("Encaja:" + encaja);
-
-	if (encajaMegusta)
-	{
-		var total_me_gusta = Number(localStorage.getItem(event.target.id)) + 1;
-		//console.log("total_me_gusta para elemento " + event.target.id + " es " + total_me_gusta);
-		
-		$('#' + event.target.id).text(total_me_gusta); // Recargar div del elemento
-		localStorage.setItem(event.target.id, total_me_gusta); // Actualizar Web Storage
-	}
-});
-
 // Función que recupera el número de "Me gusta" de un elemento
 function getMegusta(elemento)
 {
