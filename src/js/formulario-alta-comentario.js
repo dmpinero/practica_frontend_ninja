@@ -1,8 +1,8 @@
 var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
 var comentarios = require('./comentarios-carga');
+var comentariosApiClient = require('./comentarios-api-client');
 //console.log("Cargado formulario-alta-comentario.js");
-
 
 // Validar textarea (Máximo de 120 palabras)
 $('#comentario').on("keyup", function() {
@@ -57,35 +57,36 @@ $('#formulario-alta-comentario').on("submit", function() {
 			comentario: utils.escapeHTML($("#comentario").val()) // Escapamos caracteres especiales
 		};
 
-		// Petición Ajax para guardar la información en el backend
-		$.ajax({
-			url: "/api/comentarios/", // URL de petición
-			method: "post",      	  // Creación del comentario	
-			data: comentario, 		  // Información del comentario
-			beforeSend: function() { // Ejecución antes de la petición Ajax
-				$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
-				// Cambiar texto del botón y deshabilitar botón
-				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
-			},
-			success: function (response) { // Función callback cuando la petición sea exitosa
-				console.log ("SUCCESS", response);
-				$("form")[0].reset(); // Limpiar formulario
-				$("nombre").focus(); // Poner foco en el campo nombre
+   		//beforesend. Antes de realizar la llamada AJAX
+	    function beforeSave() { // antes de enviar la petición
+			console.log("beforeSave");
+			$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
+			// Cambiar texto del botón y deshabilitar botón
+			$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);	    
+	    }
 
-				// Recargamos los comentarios
-				console.log ("Voy a recargar comentarios", response);
-				comentarios.load();
-			},
-			error: function (response) {
-				console.log ("ERROR", response);	
-			},		
-			complete: function() { // Petición Ajax finalizada en cualquier circunstancia (success o error)
-				$(inputs).attr("disabled", false); // Habilitar todos los inputs
-				$(textareas).attr("disabled", false); // Habilitar todos los textarea
-				// Cambiar texto del botón y habilitar botón
-				$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);
-			}		
-		});
+   		// complete. Al finalizar la llamada AJAX independientemente del resultado
+    	function onComplete() {
+    		console.log("onComplete");
+			$(inputs).attr("disabled", false); // Habilitar todos los inputs
+			$(textareas).attr("disabled", false); // Habilitar todos los textarea
+			// Cambiar texto del botón y habilitar botón
+			$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);    		
+    	}
+
+		// Petición Ajax para guardar la información en el backend
+		comentariosApiClient.save(comentario, 
+			function (response) {
+				console.log ("SUCCESS", response);
+					$("form")[0].reset(); // Limpiar formulario
+					$("nombre").focus(); // Poner foco en el campo nombre
+
+					// Recargamos los comentarios
+					console.log ("Voy a recargar comentarios", response);
+					comentarios.load();				
+			}, function (response) {
+				console.log ("ERROR", response);
+		});		
 
 	    return false;  
 	}

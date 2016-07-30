@@ -14276,7 +14276,7 @@ require('./fecha-hora');	  			 // Cálculo de fecha y hora
 require('./formulario-alta-comentario'); // Formulario para alta de comentarios
 require('./web-storage'); 				 // Recuperación y almacenamiento de elementos "Me gusta"
 require('./web-storage-events');		 // Eventos de web-storage
-},{"./articulo-enlace":4,"./fecha-hora":6,"./formulario-alta-comentario":7,"./web-storage":10,"./web-storage-events":9}],4:[function(require,module,exports){
+},{"./articulo-enlace":4,"./fecha-hora":7,"./formulario-alta-comentario":8,"./web-storage":11,"./web-storage-events":10}],4:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado articulo-enlace.js");
 
@@ -14292,10 +14292,86 @@ $('.autor-comentarios').on("click", function() {
 });
 },{"jquery":1}],5:[function(require,module,exports){
 var $ = require('jquery');
+
+module.exports = {
+	save: function(comentario, successCallback, errorCallback) {
+		// Petición Ajax para guardar la información en el backend
+		$.ajax({
+			url: "/api/comentarios/", // URL de petición
+			method: "post",      	  // Creación del comentario	
+			data: comentario, 		  // Información del comentario
+			/*
+			beforeSend: function() { // Ejecución antes de la petición Ajax
+				$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
+				// Cambiar texto del botón y deshabilitar botón
+				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
+			},
+			success: function (response) { // Función callback cuando la petición sea exitosa
+				console.log ("SUCCESS", response);
+				$("form")[0].reset(); // Limpiar formulario
+				$("nombre").focus(); // Poner foco en el campo nombre
+
+				// Recargamos los comentarios
+				console.log ("Voy a recargar comentarios", response);
+				comentarios.load();
+			},
+			error: function (response) {
+				console.log ("ERROR", response);	
+			},		
+			complete: function() { // Petición Ajax finalizada en cualquier circunstancia (success o error)
+				$(inputs).attr("disabled", false); // Habilitar todos los inputs
+				$(textareas).attr("disabled", false); // Habilitar todos los textarea
+				// Cambiar texto del botón y habilitar botón
+				$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);
+			}
+			*/
+			success: successCallback,
+			error: errorCallback		
+		});
+	},
+	load: function(successCallback, errorCallback) {
+		$.ajax({
+			cache: true,
+			method: "get",
+			url: "/api/comentarios/?_order=id",
+			success: successCallback,
+			error: errorCallback
+		});
+	}	
+};
+},{"jquery":1}],6:[function(require,module,exports){
+var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
+var comentariosApiClient = require('./comentarios-api-client');
 
 console.log("Cargado comentarios-carga.js");
 
+module.exports = {
+	load: function() {
+		comentariosApiClient.load( 
+			function(response) { // success
+				console.log("Comentarios", response);
+				$('articulo-comentarios').html('');
+				for (var i in response) {
+			        var comentario = response[i];
+			        var nombre = utils.escapeHTML(comentario.nombre || ""); // Si el atributo es undefined se reemplaza por la cadena vacía
+			        var apellidos = utils.escapeHTML(comentario.apellidos || "") ; // Si el atributo es undefined se reemplaza por la cadena vacía 
+			        var email = utils.escapeHTML(comentario.email || ""); // Si el atributo es undefined se reemplaza por la cadena vacía 
+			        var comentario = utils.escapeHTML(comentario.comentario || ""); // Si el atributo es undefined se reemplaza por la cadena vacía
+			        var html = '<article class="articulo-comentario">';
+			        html += '<div class="articulo-autor-nombre">' + nombre + ' ' + apellidos + ' ' + '(' + email + ')' + '</div>';
+			        html += '<div class="articulo-parrafo-resumen">' + comentario + '</div>' 
+			        html += '</article>';
+			        $('.articulo-comentarios').append(html);
+			    }		
+			}, function(response) { // error
+				console.log("ERROR", response);
+			}
+		);
+	}
+}
+
+/*
 module.exports = {
 	load: function() {
 		$.ajax({
@@ -14326,7 +14402,8 @@ module.exports = {
 		});
 	}
 }
-},{"./utils":8,"jquery":1}],6:[function(require,module,exports){
+*/
+},{"./comentarios-api-client":5,"./utils":9,"jquery":1}],7:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado fecha-hora.js");
 
@@ -14437,12 +14514,12 @@ function calcula_diferencia(fecha_hora_inicio)
 		return "Publicado el " + fecha_hora_inicio.format("DD/MM/YYYY") + " a las " + fecha_hora_inicio.format("HH:mm:ss");
 	}
 }
-},{"jquery":1,"moment":2}],7:[function(require,module,exports){
+},{"jquery":1,"moment":2}],8:[function(require,module,exports){
 var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
 var comentarios = require('./comentarios-carga');
+var comentariosApiClient = require('./comentarios-api-client');
 //console.log("Cargado formulario-alta-comentario.js");
-
 
 // Validar textarea (Máximo de 120 palabras)
 $('#comentario').on("keyup", function() {
@@ -14497,41 +14574,42 @@ $('#formulario-alta-comentario').on("submit", function() {
 			comentario: utils.escapeHTML($("#comentario").val()) // Escapamos caracteres especiales
 		};
 
-		// Petición Ajax para guardar la información en el backend
-		$.ajax({
-			url: "/api/comentarios/", // URL de petición
-			method: "post",      	  // Creación del comentario	
-			data: comentario, 		  // Información del comentario
-			beforeSend: function() { // Ejecución antes de la petición Ajax
-				$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
-				// Cambiar texto del botón y deshabilitar botón
-				$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);
-			},
-			success: function (response) { // Función callback cuando la petición sea exitosa
-				console.log ("SUCCESS", response);
-				$("form")[0].reset(); // Limpiar formulario
-				$("nombre").focus(); // Poner foco en el campo nombre
+   		//beforesend. Antes de realizar la llamada AJAX
+	    function beforeSave() { // antes de enviar la petición
+			console.log("beforeSave");
+			$(inputs).attr("disabled", true); // Deshabilitar todos los inputs
+			// Cambiar texto del botón y deshabilitar botón
+			$('#formulario-alta-comentario button').text("Guardando comentario...").attr("disabled", true);	    
+	    }
 
-				// Recargamos los comentarios
-				console.log ("Voy a recargar comentarios", response);
-				comentarios.load();
-			},
-			error: function (response) {
-				console.log ("ERROR", response);	
-			},		
-			complete: function() { // Petición Ajax finalizada en cualquier circunstancia (success o error)
-				$(inputs).attr("disabled", false); // Habilitar todos los inputs
-				$(textareas).attr("disabled", false); // Habilitar todos los textarea
-				// Cambiar texto del botón y habilitar botón
-				$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);
-			}		
-		});
+   		// complete. Al finalizar la llamada AJAX independientemente del resultado
+    	function onComplete() {
+    		console.log("onComplete");
+			$(inputs).attr("disabled", false); // Habilitar todos los inputs
+			$(textareas).attr("disabled", false); // Habilitar todos los textarea
+			// Cambiar texto del botón y habilitar botón
+			$('#formulario-alta-comentario button').text("Enviar").attr("disabled", false);    		
+    	}
+
+		// Petición Ajax para guardar la información en el backend
+		comentariosApiClient.save(comentario, 
+			function (response) {
+				console.log ("SUCCESS", response);
+					$("form")[0].reset(); // Limpiar formulario
+					$("nombre").focus(); // Poner foco en el campo nombre
+
+					// Recargamos los comentarios
+					console.log ("Voy a recargar comentarios", response);
+					comentarios.load();				
+			}, function (response) {
+				console.log ("ERROR", response);
+		});		
 
 	    return false;  
 	}
 	
 });
-},{"./comentarios-carga":5,"./utils":8,"jquery":1}],8:[function(require,module,exports){
+},{"./comentarios-api-client":5,"./comentarios-carga":6,"./utils":9,"jquery":1}],9:[function(require,module,exports){
 var $ = require('jquery');
 
 module.exports = {
@@ -14539,7 +14617,7 @@ module.exports = {
         return $('<div>').text(str).html();
     }
 }
-},{"jquery":1}],9:[function(require,module,exports){
+},{"jquery":1}],10:[function(require,module,exports){
 var $ = require('jquery');
 
 // Detectar pulsación sobre "Me gusta" en un artículo
@@ -14551,7 +14629,7 @@ $('.articulo-me-gusta').on("click", function(event) {
 	$('#' + event.target.id).text(total_me_gusta); // Recargar div del elemento
 	localStorage.setItem(event.target.id, total_me_gusta); // Actualizar Web Storage
 });
-},{"jquery":1}],10:[function(require,module,exports){
+},{"jquery":1}],11:[function(require,module,exports){
 var $ = require('jquery');
 //console.log("Cargado web-storage.js");
 
