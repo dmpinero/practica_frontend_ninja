@@ -3,6 +3,13 @@ body {
 
 	font-family: $main-font-family;
 	font-size: $font-size-normal;
+
+    @include if-is-tablet {
+        font-size: $font-size-tablet;
+    }
+    @include if-is-desktop {
+        font-size: $font-size-desktop;
+    } 
 }
 
 header,

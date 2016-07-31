@@ -16,6 +16,10 @@
 .cabecera {
 	border-bottom: 5px solid $color-primary-1;
 
+	.visualizar_categoria {
+		display: block;
+	}
+
 	form,
 	.nombre-app,
 	.acceso,
@@ -25,13 +29,20 @@
 	}
 
 	.ion-planet {
-		font-size: 250%; // Logotipo al 250%
+		font-size: 250%;
 	}	
 
 	.nombre-app {
 		font-size: $font-size-large;
 		color: $logo-color;
+		margin-top: 10px;
 	}	
+
+	.navigation {
+		.categoria {
+			display: none;
+		}
+	}
 
 	.acceso,
 	.registro {
@@ -40,17 +51,78 @@
 		float: left;
 	}	
 
-	// Ocultar estos elementos de la cabecera en versión mobile
-	.cabecera-elemento,
 	.acceso,
 	.registro,
-	.buscador {
-		display: block;
+	#buscador {
+		display: none;
+	}	
+
+	ul.categorias {
+		display:none;
+	}
+
+	@include if-is-tablet {
+		.acceso,
+		.registro,
+		#buscador {
+			display: inline-block;
+			font-size: $font-size-tablet;
+		}
+
+		.acceso,
+		.registro {
+			margin-top: 15px;	
+		}
+
+		#buscador {
+			margin-top: 10px;
+		}		
+
+	}
+
+	@include if-is-desktop {
+		.acceso,
+		.registro,
+		#buscador {
+			display: inline-block;
+			font-size: $font-size-tablet;
+		}
+
+		.acceso,
+		.registro {
+			margin-top: 17px;
+			color: $color-primary-4;	
+		}
+
+		#buscador {
+			margin-top: 12px;
+		}
+
+		#icono_menu_sustituto {
+			display: none;
+		}
+
+		#icono_menu_sustituto {
+			display: none;
+		}
+
+		.navigation {
+			.categoria {
+				margin-top: 15px;
+				display: inline-block;
+				text-decoration: none;
+				color: $color-primary-2;
+			}
+		}
 	}	
 
 	.menu {
 		font-size:250%;
 		color: $logo-color;
+	}
+
+	#buscador {
+		border: 1px solid $borde-buscador;
 	}
 }
 /******************* ESTILOS CABECERA *********************/

@@ -1,7 +1,6 @@
-/******************* ESTILOS FOOTER *********************/
 .pie {
 	background: $footer-background-color;
-
+	margin-top: 10px;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -10,13 +9,52 @@
 
 	-webkit-flex-flow: row wrap;
 	justify-content: space-between;	
+	align-items: center;
 
 	.nombre-app,
 	.subir {
 		display: inline-block;	
 	}
 
+	.nombre-app {
+		font-size: $font-size-small;
+		text-align: center;		
+		color: $logo-color;
+		@include if-is-tablet {
+			font-size: 180%;
+		}	
+		@include if-is-desktop {
+			font-size: 250%;
+		}				
+	}
+
+	.subir {
+		margin-right: 10px;
+	}
+
+	.subir {
+		cursor: pointer;
+		&:link,
+	 	&:visited { 
+	    	text-decoration: none;
+		    border: 0;
+		    color: $enlace-subir;
+		    -webkit-transition: color 0.2s;
+		    transition: color 0.2s;
+		}
+	}
+
 	.ion-planet {
-		font-size: 150%; // Logotipo al 250%
-	}	
-}/******************* ESTILOS FOOTER *********************/
+		font-size: 150%;
+	}
+
+	.logo {
+		margin-left: 10px;
+		@include if-is-tablet {
+			font-size: 180%;
+		}		
+		@include if-is-desktop {
+			font-size: 250%;
+		}		
+	}
+}

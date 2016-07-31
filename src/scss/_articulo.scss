@@ -1,6 +1,6 @@
-/******************* ESTILOS ARTICULO *********************/
 .articulo {
 	margin-top: 40px;
+	cursor: pointer;
 }
 
 .articulo-foto-autor {
@@ -27,18 +27,16 @@
 
 .articulo-parrafo-resumen {
 	text-align: justify;
+	margin-top: 10px;
 }
 
 .articulo-me-gusta,
 .autor-comentarios {
 	display: inline-block;
+	cursor: pointer;
 	margin: 10px 0px;
-}
-
-.autor-comentarios,
-.articulo-me-gusta {
 	font-size: 110%;
-	color: $articulo-me-gusta;
+	color: $articulo-me-gusta;	
 }
 
 .ion-person
@@ -68,4 +66,27 @@
 .menos-diez-palabras {
 	color: $menos-diez-palabras;
 }
-/******************* ESTILOS ARTICULO *********************/
+
+.comentarios-formulario-alta{
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 100px;
+}
+
+.enviar-formulario {
+	cursor: pointer;
+}
+
+*:focus {outline: none;}

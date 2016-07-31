@@ -82,7 +82,7 @@ $('#formulario-alta-comentario').on("submit", function() {
 					$("nombre").focus(); // Poner foco en el campo nombre
 
 					// Recargamos los comentarios
-					console.log ("Voy a recargar comentarios", response);
+					//console.log ("Voy a recargar comentarios tras crear un comentario nuevo", response);
 					comentarios.load();				
 			}, function (response) {
 				console.log ("ERROR", response);

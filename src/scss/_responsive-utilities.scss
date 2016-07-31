@@ -1,0 +1,11 @@
+@mixin if-is-tablet {
+    @media all and (min-device-width: #{$tablet-min-width}) and (max-device-width: #{$tablet-max-width}) {
+        @content;
+    }
+}
+
+@mixin if-is-desktop {
+    @media all and (min-device-width: #{$desktop-min-width}) {
+        @content;
+    }
+}
