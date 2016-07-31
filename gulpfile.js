@@ -37,7 +37,7 @@ gulp.task("default", ["concat-js", "compile-sass", "assets-optimize-images"], fu
 	gulp.watch(jsFiles, ["concat-js"]);
 
 	// observar cambios en cualquier imagen y lanzar la optimización
-	gulp.watch(imageDirs, ["optimize-images"]);
+	gulp.watch(imageDirs, ["assets-optimize-images"]);
 });
 
 // Definimos tarea para compiplar SASS
