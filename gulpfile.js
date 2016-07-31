@@ -5,6 +5,10 @@ var browserSync = require('browser-sync').create();
 var browserify = require('browserify');
 var tap = require('gulp-tap');
 var buffer = require('gulp-buffer');
+var uglify = require('gulp-uglify');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 
 // Variables de patrones de archivos
 var jsFiles = ["src/js/*.js", "src/js/**/*.js"];
@@ -33,6 +37,10 @@ gulp.task("default", ["concat-js", "compile-sass"], function(){
 gulp.task("compile-sass", function(){
 	gulp.src("./src/scss/style.scss") // cargamos el archivo
 	.pipe(sass().on('error', sass.logError)) // compilamos el archivo sass. En caso de error lo muestra por el log
+    .pipe(postcss([
+        autoprefixer(), // autoprefija automáticamente el CSS
+        cssnano() // minifica el CSS
+    ]))
 	.pipe(gulp.dest("./dist/css/")) // guardamos el archivo en dist/css
 	.pipe(notify({
 		title: "SASS",
@@ -48,6 +56,7 @@ gulp.task("concat-js", function(){
         file.contents = browserify(file.path).bundle(); // pasamos el archivo por browserify para importar los require
     }))
     .pipe(buffer()) // convertir cada archivo en un stream
+    .pipe(uglify()) // minifica el java
     .pipe(gulp.dest("dist/js/"))
     .pipe(notify({
         title: "JS",
