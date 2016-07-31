@@ -4,14 +4,13 @@ var utils = require('./utils');			// Escapado de texto
 var comentariosApiClient = require('./comentarios-api-client');
 
 //console.log("Cargado comentarios-carga.js");
-
-//dmp. Completar funcionalidad. Si ya se ha realizado la carga no volver a cargar
 var blnPrimeraCarga = true;
 
 function pintarComentarios(response) {
-	console.log("Voy a pintar los comentarios",response);
+	//console.log("Voy a pintar los comentarios",response);
 	if (blnPrimeraCarga) {
-		$('articulo-comentarios').html('');
+		//$('.articulo-comentarios').remove();
+		$('.articulo-comentarios').html('');
 		var cabecera = '<div class="row"><h2>Lista de comentarios</h2></div>';
 		var html = cabecera;
 		for (var i in response) {
@@ -51,7 +50,7 @@ $(document).scroll(function() {
 	//console.log("Posición actual", $(document).scrollTop());
 
 	if ($(document).scrollTop() >= 694 && blnPrimeraCarga) {
-		console.log("Cargo comentarios por scroll");
+		//console.log("Cargo comentarios por scroll");
 		comentariosApiClient.load( 
 			function(response) { // success
 				//console.log("Comentarios", response);

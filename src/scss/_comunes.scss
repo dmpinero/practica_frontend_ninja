@@ -9,7 +9,7 @@ body {
     }
     @include if-is-desktop {
         font-size: $font-size-desktop;
-    } 
+    }
 }
 
 header,
@@ -32,6 +32,7 @@ section {
 
 .logo {
 	color: $logo-color;
+    cursor: pointer;
 }
 
 .negrita {

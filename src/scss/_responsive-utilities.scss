@@ -1,3 +1,9 @@
+@mixin if-is-mobile {
+    @media all and (max-device-width: #{$tablet-min-width - 1px}) {
+        @content;
+    }
+}
+
 @mixin if-is-tablet {
     @media all and (min-device-width: #{$tablet-min-width}) and (max-device-width: #{$tablet-max-width}) {
         @content;

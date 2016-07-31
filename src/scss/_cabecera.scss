@@ -15,10 +15,13 @@
 
 .cabecera {
 	border-bottom: 5px solid $color-primary-1;
-
-	.visualizar_categoria {
-		display: block;
-	}
+    width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #555;
+	box-shadow: 0 2px 2px #efefef;
+	z-index: 9999;
 
 	form,
 	.nombre-app,
@@ -124,5 +127,6 @@
 	#buscador {
 		border: 1px solid $borde-buscador;
 	}
+
 }
 /******************* ESTILOS CABECERA *********************/
