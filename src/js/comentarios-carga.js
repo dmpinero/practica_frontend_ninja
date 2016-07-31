@@ -3,7 +3,10 @@ var utils = require('./utils');			// Escapado de texto
 
 var comentariosApiClient = require('./comentarios-api-client');
 
-console.log("Cargado comentarios-carga.js");
+//console.log("Cargado comentarios-carga.js");
+
+//dmp. Completar funcionalidad. Si ya se ha realizado la carga no volver a cargar
+var blnPrimeraCarga = false;
 
 module.exports = {
 	load: function() {
