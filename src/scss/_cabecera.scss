@@ -1,132 +1,74 @@
-/******************* ESTILOS CABECERA *********************/
-.navigation {
-  list-style: none;
-  margin: 10px;
-
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-flex-flow: row wrap;
-  justify-content: space-between;
-}
-
-.cabecera {
-	border-bottom: 5px solid $color-primary-1;
+/****************************** BUSCADOR ***************************************/
+#search {
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: #555;
-	box-shadow: 0 2px 2px #efefef;
-	z-index: 9999;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    
+    -webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 
-	form,
-	.nombre-app,
-	.acceso,
-	.registro,
-	.autor-comentarios {
-		display: inline-block; 
-	}
-
-	.ion-planet {
-		font-size: 250%;
-	}	
-
-	.nombre-app {
-		font-size: $font-size-large;
-		color: $logo-color;
-		margin-top: 10px;
-	}	
-
-	.navigation {
-		.categoria {
-			display: none;
-		}
-	}
-
-	.acceso,
-	.registro {
-		font-size: $font-size-small;
-		color: $logo-color;
-		float: left;
-	}	
-
-	.acceso,
-	.registro,
-	#buscador {
-		display: none;
-	}	
-
-	ul.categorias {
-		display:none;
-	}
-
-	@include if-is-tablet {
-		.acceso,
-		.registro,
-		#buscador {
-			display: inline-block;
-			font-size: $font-size-tablet;
-		}
-
-		.acceso,
-		.registro {
-			margin-top: 15px;	
-		}
-
-		#buscador {
-			margin-top: 10px;
-		}		
-
-	}
-
-	@include if-is-desktop {
-		.acceso,
-		.registro,
-		#buscador {
-			display: inline-block;
-			font-size: $font-size-tablet;
-		}
-
-		.acceso,
-		.registro {
-			margin-top: 17px;
-			color: $color-primary-4;	
-		}
-
-		#buscador {
-			margin-top: 12px;
-		}
-
-		#icono_menu_sustituto {
-			display: none;
-		}
-
-		#icono_menu_sustituto {
-			display: none;
-		}
-
-		.navigation {
-			.categoria {
-				margin-top: 15px;
-				display: inline-block;
-				text-decoration: none;
-				color: $color-primary-2;
-			}
-		}
-	}	
-
-	.menu {
-		font-size:250%;
-		color: $logo-color;
-	}
-
-	#buscador {
-		border: 1px solid $borde-buscador;
-	}
-
+    -webkit-transform: translate(0px, -100%) scale(0, 0);
+	-moz-transform: translate(0px, -100%) scale(0, 0);
+	-o-transform: translate(0px, -100%) scale(0, 0);
+	-ms-transform: translate(0px, -100%) scale(0, 0);
+	transform: translate(0px, -100%) scale(0, 0);
+    
+    opacity: 0;
 }
-/******************* ESTILOS CABECERA *********************/
+
+#search.open {
+    -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+	-o-transform: translate(0px, 0px) scale(1, 1);
+	-ms-transform: translate(0px, 0px) scale(1, 1);
+	transform: translate(0px, 0px) scale(1, 1); 
+    opacity: 1;
+}
+
+#search input[type="search"] {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0);
+    font-size: 60px;
+    font-weight: 300;
+    @include if-is-tablet {
+        font-size: $font-size-tablet;
+    }
+    @include if-is-mobile {
+     font-size: $font-size-normal;   
+    }
+    text-align: center;
+    border: 0px;
+    margin: 0px auto;
+    margin-top: -51px;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+}
+#search .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 61px;
+    margin-left: -45px;
+}
+#search .close {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+	background-color: #428bca;
+	border-color: #357ebd;
+	opacity: 1;
+	padding: 10px 17px;
+	font-size: 27px;
+}
+/****************************** BUSCADOR ***************************************/

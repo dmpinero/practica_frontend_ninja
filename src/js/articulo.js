@@ -1,12 +1,13 @@
 var $ = require('jquery');
-//console.log("Cargado articulo-enlace.js");
+//console.log("Cargado articulo.js");
 
+// Click en el artículo. LLeva al detalle
 $('.articulo').on("click", function() {
 	window.location.href = 'detalle_articulo.html';
 });
 
 
-// Pulsando en el número de comentarios lleva a la lista
+// Click en el número de comentarios. Lleva a la lista
 // de comentarios del detalle del artículo
 $('.autor-comentarios').on("click", function() {
 	window.location.href = 'detalle_articulo.html#articulo-comentarios';

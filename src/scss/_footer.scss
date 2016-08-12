@@ -1,23 +1,29 @@
 .pie {
 	background: $footer-background-color;
-	margin-top: 10px;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
-
+	height: 40px;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-between;	
 	align-items: center;
 
+	@include if-is-tablet {
+		height: 60px;
+	}	
+	@include if-is-desktop {
+		height: 80px;
+	}				
+
 	.nombre-app,
 	.subir {
-		display: inline-block;	
+		display: inline-block;
+		margin: 0;
 	}
 
 	.nombre-app {
-		font-size: $font-size-small;
 		text-align: center;		
 		color: $logo-color;
 		@include if-is-tablet {
@@ -30,9 +36,6 @@
 
 	.subir {
 		margin-right: 10px;
-	}
-
-	.subir {
 		cursor: pointer;
 		&:link,
 	 	&:visited { 
@@ -42,10 +45,6 @@
 		    -webkit-transition: color 0.2s;
 		    transition: color 0.2s;
 		}
-	}
-
-	.ion-planet {
-		font-size: 150%;
 	}
 
 	.logo {

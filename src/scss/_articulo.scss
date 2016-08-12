@@ -1,9 +1,8 @@
 .primera-seccion {
-	margin-top: 100px;
+	margin-top: 10px;
 }
 
 .articulo {
-	margin-top: 40px;
 	cursor: pointer;
 }
 
@@ -43,9 +42,9 @@
 	color: $articulo-me-gusta;	
 }
 
-.ion-person
-{
-	font-size:250%;
+.articulo-etiqueta-label {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .autor-me-gusta {
@@ -57,40 +56,23 @@
 	float: right;
 }
 
-/* ------------------------------------------------------------------------------------------ */
-/* FORMULARIO ALTA DE COMENTARIO */
-/* ------------------------------------------------------------------------------------------ */
-.cien-o-mas-palabras {
-	color: $cien-o-mas-palabras;
-}
-.menos-cien-palabras {
-	color: $menos-cien-palabras;
+.icono-fecha-publicacion {
+	display: inline-block;
 }
 
-.menos-diez-palabras {
-	color: $menos-diez-palabras;
+video {
+  width: 100%    !important;
+  height: auto   !important;
 }
 
-.comentarios-formulario-alta{
-    width: 60%;
-    margin: 0 auto;
+/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/
+.articulo-comentarios
+{
+	margin: 10px;
 }
 
-input[type=text],
-input[type=email],
-textarea {
-    width: 100%;
-    padding: 7px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+#articulo_comentario {
+	margin: 0px 0px 10px 0px;
+	border-bottom: 1px solid $color-primary-6;
 }
-
-textarea {
-    height: 100px;
-}
-
-.enviar-formulario {
-	cursor: pointer;
-}
-
-*:focus {outline: none;}
+/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/

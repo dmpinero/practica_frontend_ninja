@@ -1,11 +1,12 @@
-@import "responsive-utilities";
 @import "reset"; 		// Idéntico comportamiento en todos los navegadores
 @import "clearfix"; 	// Estilos para clearfix
-@import "https://fonts.googleapis.com/css?family=Lato:400,700'"; // Google fonts
-@import "grid"; 		// grid de la aplicación
+@import "responsive-utilities";
+@import "bootstrap";
+@import "bootstrap/theme";
 @import "variables"; 	// Variables de la aplicación
 @import "comunes";		// Estilos comunes
 @import "cabecera";     // Estilos para la cabecera
 @import "articulo";     // Estilos para los artículos
+@import "formulario-alta-comentario"; 		// Formulario de alta de nuevo comentario (detalle_articulo.html)
 @import "paginacion";   // Estilos para la paginación
 @import "footer";       // Estilos para el footer

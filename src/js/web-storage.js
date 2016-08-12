@@ -7,7 +7,7 @@ $(document).ready(function() {
 	for (i=1; i<11; i++)
 	{
 		var id_articulo = 'articulo' + i + '-me-gusta';
-		var meGustaElemento = getMegusta(id_articulo);	
+		var meGustaElemento = " "+ getMegusta(id_articulo);	
 		$('#' + id_articulo).text(meGustaElemento);
 	}
  });

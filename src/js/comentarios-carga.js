@@ -9,7 +9,6 @@ var blnPrimeraCarga = true;
 function pintarComentarios(response) {
 	//console.log("Voy a pintar los comentarios",response);
 	if (blnPrimeraCarga) {
-		//$('.articulo-comentarios').remove();
 		$('.articulo-comentarios').html('');
 		var cabecera = '<div class="row"><h2>Lista de comentarios</h2></div>';
 		var html = cabecera;
@@ -19,11 +18,18 @@ function pintarComentarios(response) {
 		    var apellidos = utils.escapeHTML(comentario.apellidos || "") ; // Si el atributo es undefined se reemplaza por la cadena vacía 
 		    var email = utils.escapeHTML(comentario.email || ""); // Si el atributo es undefined se reemplaza por la cadena vacía 
 		    var comentario = utils.escapeHTML(comentario.comentario || ""); // Si el atributo es undefined se reemplaza por la cadena vacía			        
-		    html += '<article class="articulo-comentario">';
-		    html += '<div class="articulo-autor-nombre">' + nombre + ' ' + apellidos + ' ' + '(' + email + ')' + '</div>';
-		    html += '<div class="articulo-parrafo-resumen">' + comentario + '</div>' 
-		    html += '</article>';
+			html += '<div class="row" id="articulo_comentario">';
+			html += '<div class="col-sm-2 text-center">';
+			html += '<img src="img/bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">';
+			html += '</div>';
+			html += '<div class="col-sm-10">';
+			html += '<h4>' + nombre + ' ' + apellidos + '<small>' + ' (' + email + ')' + '</small></h4>';
+			html += '<p>' + comentario + '</p>';
+			html += '</div>';
+			html += '</div>';
+			html += '</article>';
 		}
+
 		 $('.articulo-comentarios').append(html);
 		 blnPrimeraCarga = false;
 	}

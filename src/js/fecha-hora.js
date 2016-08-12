@@ -81,7 +81,7 @@ function calcula_diferencia(fecha_hora_inicio)
 		if (diferencia_segundos > 1) {
 			literal_segundos = "segundos"
 		}
-		return "Publicado hace " + diferencia_segundos + " " + literal_segundos;
+		return "Hace " + diferencia_segundos + " " + literal_segundos;
 	} else if (diferencia_minutos > 0 && diferencia_minutos < 60) {
 		//console.log ("Publicado hace " + diferencia_minutos + " minutos");
 		
@@ -89,7 +89,7 @@ function calcula_diferencia(fecha_hora_inicio)
 		if (diferencia_minutos > 1) {
 			literal_minutos = "minutos"
 		}
-		return "Publicado hace " + diferencia_minutos + " " + literal_minutos;
+		return "Hace " + diferencia_minutos + " " + literal_minutos;
 	} else if (diferencia_horas > 0 && diferencia_horas < 24) {
 		//console.log ("diferencia en horas:" + diferencia_horas);
 		var literal_horas = "hora";
@@ -97,14 +97,14 @@ function calcula_diferencia(fecha_hora_inicio)
 			literal_horas = "horas"
 		}
 
-		return "Publicado hace " + diferencia_horas + " " + literal_horas;
+		return "Hace " + diferencia_horas + " " + literal_horas;
 	} else if (diferencia_dias > 0 && diferencia_dias < 7) {		
 		var dia_semana_sp = dias_semana[fecha_hora_inicio.day()];
 		//console.log ("Día de la semana:" + dia_semana_sp);
 
-		return "Publicado el " + dia_semana_sp;
+		return "El " + dia_semana_sp;
 	}
 	else {
-		return "Publicado el " + fecha_hora_inicio.format("DD/MM/YYYY") + " a las " + fecha_hora_inicio.format("HH:mm:ss");
+		return "El " + fecha_hora_inicio.format("DD/MM/YYYY") + " a las " + fecha_hora_inicio.format("HH:mm:ss");
 	}
 }

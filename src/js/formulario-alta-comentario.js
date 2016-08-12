@@ -2,6 +2,9 @@ var $ = require('jquery');
 var utils = require('./utils');	// Escapado de texto
 var comentarios = require('./comentarios-carga');
 var comentariosApiClient = require('./comentarios-api-client');
+
+$('#capa_error').hide(); // Ocutar visualización de la capa de error
+
 //console.log("Cargado formulario-alta-comentario.js");
 
 // Validar textarea (Máximo de 120 palabras)
@@ -31,21 +34,74 @@ $('#comentario').on("keyup", function() {
     }
 });
 
+
+// Función que añade la capa si no existe
+function añadecapa(capa, capa_añadida) {
+    if (! document.getElementById(capa).classList.contains(capa_añadida))
+        document.getElementById(capa).classList.add(capa_añadida);
+}
+
+// Función que borra la capa si existe
+function borracapa(capa, capa_borrar) {
+    if (document.getElementById(capa).classList.contains(capa_borrar))
+        document.getElementById(capa).classList.remove(capa_borrar);
+}
+
 // Al hacer enviar formulario pulsando ENTER o hacer click en el botón de guardar enviamos una petición Ajax
-$('#formulario-alta-comentario').on("submit", function() {
+$('#formulario-alta-comentario').on("submit", function(evt) {
 	//console.log("Submit del formulario");
 
+	// Validar presencia del nombre
+    var nombre = $('#nombre')[0];
+    if (nombre.checkValidity() == false) {
+        $('#capa_error').show();
+        $('#texto_capa_error')[0].innerText = "Escribe tu nombre";
+        añadecapa('capa_error', 'alert-danger');
+        borracapa('capa_error', 'alert-success');
+        nombre.focus();
+        evt.preventDefault();
+        return false;
+    }
+
+    // Validar presencia de los apellidos
+    var apellidos = $('#apellidos')[0];
+    if (apellidos.checkValidity() == false) {
+        $('#capa_error').show();
+        $('#texto_capa_error')[0].innerText = "Escribe tus apellidos";           
+        añadecapa('capa_error', 'alert-danger');
+        borracapa('capa_error', 'alert-success');
+        apellidos.focus();
+        evt.preventDefault();
+        return false;
+    }
+
+    // Validar email (Formato)
+    var email = $('#email')[0];
+    if (email.checkValidity() == false) {
+        $('#capa_error').show();
+        $('#texto_capa_error')[0].innerText = "Email no válido";
+        añadecapa('capa_error', 'alert-danger');
+        borracapa('capa_error', 'alert-success');
+        email.focus();
+        evt.preventDefault();
+        return false;
+    }
+
+    // Validar número de palabras del comentario
+    var comentario = $('#comentario')[0];
 	var palabras_restantes = $('#palabras_restantes')[0].innerHTML;
+	//console.log("palabras_restantes:", palabras_restantes);
     if (parseInt(palabras_restantes) < 0)
     {
-        alert("Número de palabras excedido");
-        
+        $('#capa_error').show();
+        $('#texto_capa_error')[0].innerText = "Número de palabras excedido";
+        añadecapa('capa_error', 'alert-danger');
+        borracapa('capa_error', 'alert-success');
+        comentario.focus();
+        evt.preventDefault();        
         return false;  
     }
     else {
-	    // Advertimos de éxito en el envío del formulario, simulando su envio.
-	    alert('Formulario enviado con éxito');
-	    
 	    var inputs = $("#formulario-alta-comentario input"); // Almacenar todos los inputs del formulario
 	    var textareas = $("#formulario-alta-comentario textarea"); // Almacenar todos los textarea del formulario
 
@@ -78,17 +134,23 @@ $('#formulario-alta-comentario').on("submit", function() {
 		comentariosApiClient.save(comentario, 
 			function (response) {
 				console.log ("SUCCESS", response);
-					$("form")[0].reset(); // Limpiar formulario
-					$("nombre").focus(); // Poner foco en el campo nombre
-
+					$("#formulario-alta-comentario")[0].reset(); // Limpiar formulario
+					nombre.focus(); // Poner foco en el campo nombre
 					// Recargamos los comentarios
 					//console.log ("Voy a recargar comentarios tras crear un comentario nuevo", response);
 					comentarios.load();				
+
+			    	// Advertimos de éxito en el envío del formulario, simulando su envio.
+				    $('#capa_error').show();
+        			$('#texto_capa_error')[0].innerText = "Formulario enviado con éxito";
+					añadecapa('capa_error', 'alert-success');
+			        borracapa('capa_error', 'alert-danger');
 			}, function (response) {
 				console.log ("ERROR", response);
-		});		
-
-	    return false;  
+				$('#capa_error').show();
+        		$('#texto_capa_error')[0].innerText = "Error en la carga de comentarios";
+				añadecapa('capa_error', 'alert-danger');
+			    borracapa('capa_error', 'alert-success');				
+		});		 
 	}
-	
 });
