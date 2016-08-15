@@ -1,37 +1,28 @@
 .pie {
-	background: $footer-background-color;
+	background: $color-footer;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
-	height: 40px;
+	height: 60px;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-between;	
 	align-items: center;
-
-	@include if-is-tablet {
-		height: 60px;
-	}	
-	@include if-is-desktop {
-		height: 80px;
-	}				
-
+	color: $color-blanco;
+    font-weight: 300;
+    font-size: 18px;
+    
 	.nombre-app,
 	.subir {
 		display: inline-block;
 		margin: 0;
-	}
-
-	.nombre-app {
-		text-align: center;		
-		color: $logo-color;
 		@include if-is-tablet {
-			font-size: 180%;
+			font-size: 150%;
 		}	
 		@include if-is-desktop {
-			font-size: 250%;
-		}				
+			font-size: 120%;
+		}		
 	}
 
 	.subir {
@@ -41,19 +32,17 @@
 	 	&:visited { 
 	    	text-decoration: none;
 		    border: 0;
-		    color: $enlace-subir;
+		    color: $color-enlace-subir;
 		    -webkit-transition: color 0.2s;
 		    transition: color 0.2s;
 		}
+
 	}
 
 	.logo {
 		margin-left: 10px;
-		@include if-is-tablet {
-			font-size: 180%;
-		}		
 		@include if-is-desktop {
-			font-size: 250%;
+			font-size: 150%;
 		}		
 	}
 }

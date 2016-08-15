@@ -1,0 +1,39 @@
+/*************** DETALLE DE UN ARTÍCULO ********************************/
+.articulo-detalle {
+	margin-top: 80px;
+	margin-bottom: 0px;
+}
+
+/* Márgenes comunes */
+.articulo-parrafo-resumen {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: justify;
+	margin-top: 10px;	
+}
+/*************** DETALLE DE UN ARTÍCULO ********************************/
+
+/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/
+.articulo-comentarios
+{
+	background-color: $color-amarillo;
+}
+
+.negrita {
+	font-weight: 700;
+}
+
+.italica {
+	font-weight: 400;	
+	font-style: italic;
+}
+
+.articulo_comentario {
+	margin: 0px 0px 10px 0px;
+	border-bottom: 1px solid $color-primary-6;
+}
+
+.articulo_comentario:last-child {
+	margin: 0;
+}
+/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/

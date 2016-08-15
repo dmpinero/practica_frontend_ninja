@@ -1,12 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700,300,300italic);
 @import "reset"; 		// Idéntico comportamiento en todos los navegadores
 @import "clearfix"; 	// Estilos para clearfix
+@import "variables"; 	// Variables de la aplicación
 @import "responsive-utilities";
+
+/* Bootstrap */
+@import "override-bootstrap-variables";
 @import "bootstrap";
 @import "bootstrap/theme";
-@import "variables"; 	// Variables de la aplicación
-@import "comunes";		// Estilos comunes
+@import "override-bootstrap-elements";
+/* Bootstrap */
+
 @import "cabecera";     // Estilos para la cabecera
-@import "articulo";     // Estilos para los artículos
+@import "articulos";     // Estilos para los artículos
+@import "detalle-articulo";     // Estilos para el detalle de un artículo
 @import "formulario-alta-comentario"; 		// Formulario de alta de nuevo comentario (detalle_articulo.html)
 @import "paginacion";   // Estilos para la paginación
 @import "footer";       // Estilos para el footer
+@import "comunes";		// Estilos comunes

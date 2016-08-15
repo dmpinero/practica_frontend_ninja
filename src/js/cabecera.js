@@ -14,7 +14,13 @@ $(function () {
             $(this).removeClass('open');
         }
     });
-    
+
+    // Pulsación en el elemento de menú "Buscar"
+    $('#myNavbar a[href="#search"]').on('click', function(event) {
+        //console.log("Pulsado en buscar");
+        $('.navbar-toggle').click();
+    });
+
     //Do not include! This prevents the form from submitting for DEMO purposes only!
     $('form').submit(function(event) {
         event.preventDefault();

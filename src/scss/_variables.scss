@@ -4,7 +4,7 @@ $tablet-min-width: 768px;
 $tablet-max-width: $desktop-min-width - 1px;
 
 // Familia de la fuente
-$main-font-family: 'Arial', sans-serif;
+$main-font-family: 'Lato', 'Arial', sans-serif;
 
 // Tamaño de fuentes
 $font-size-normal: 12px;
@@ -12,6 +12,8 @@ $font-size-small: $font-size-normal - 2px;
 $font-size-large: $font-size-normal + 12px;
 $font-size-tablet: $font-size-normal + 3px;
 $font-size-desktop: $font-size-normal + 5px;
+$font-size-mobile-buscador: $font-size-normal + 8px;
+$font-size-tablet-buscador: $font-size-normal + 28px;
 
 // Paleta primaria de colores
 $color-primary-0: #E67E22;	// Main Primary color */
@@ -20,15 +22,17 @@ $color-primary-2: #F49C4D;
 $color-primary-3: #B95E0D;
 $color-primary-4: #924500;
 $color-primary-5: #333;		// Gris oscuro
-$color-primary-6: #ddd;  // Gris claro
+$color-primary-6: #ddd;  	// Gris claro
 $color-primary-7: #00ab6b;  // Verde
+$color-footer:    #585454;  // Gris más claro
 $color-rojo: 	  #ff0000;  // Rojo
-$color-blanco:    #fff;
+$color-blanco:    #fff;		// Blanco
+$color-amarillo:  #f3efe0;
 
 // Paleta de colores
 $logo-color: $color-primary-3;
 $articulo-autor-nombre-color: $color-primary-5;
-$articulo-titulo: $color-primary-7;
+$articulo-titulo: $color-primary-5;
 $articulo-me-gusta: $color-primary-7;
 $footer-background-color: $color-primary-5;
 $numero-comentarios-color: $color-primary-7;
@@ -38,8 +42,12 @@ $cien-o-mas-palabras: $color-primary-7;
 $menos-cien-palabras: $color-primary-0;
 $menos-diez-palabras: $color-rojo;
 
-$separador-articulos: $color-primary-6;
+// Logo de autores que no tienen foto propia
+$articulo-icono-autor: #585454;  // Gris más claro
+
+$separador-articulos: $color-primary-5;
 
 // Borde que rodea al buscador
 // Footer
-$enlace-subir: #888; // Variedad de gris
+$color-enlace-subir:    $color-blanco;
+$color-parrafo-resumen: $color-primary-6;

@@ -1,9 +1,24 @@
-.primera-seccion {
-	margin-top: 10px;
-}
-
+/*************** LISTADO DE ARTÍCULOS ********************************/
 .articulo {
 	cursor: pointer;
+}
+
+.primera-seccion {
+	margin-top: 80px;
+}
+
+/* Márgenes comunes */
+.articulo-foto-autor,
+.articulo-titulo,
+.articulo-etiqueta-label,
+.articulo-me-gusta,
+.autor-comentarios {
+	margin-left: 10px;
+}
+
+.articulo-me-gusta,
+.autor-comentarios {
+	margin-right: 10px;
 }
 
 .articulo-foto-autor {
@@ -12,33 +27,26 @@
 	margin-right: 5px;
 }
 
+.articulo-icono-autor {
+	color: $articulo-icono-autor;
+	font-size: 250%;
+}
+
 .articulo-autor-nombre {
 	color: $articulo-autor-nombre-color;
 	margin-bottom: 3px;
 }
 
 .autor-fecha-publicacion {
-	margin-bottom: 15px;
-}
-
-.articulo-titulo {
-	font-size: $font-size-large;
-	font-weight: bold;
-	margin-bottom: 10px;
-	color: $articulo-titulo;
-}
-
-.articulo-parrafo-resumen {
-	text-align: justify;
-	margin-top: 10px;
+	margin-bottom: 5px;
 }
 
 .articulo-me-gusta,
 .autor-comentarios {
 	display: inline-block;
 	cursor: pointer;
-	margin: 10px 0px;
 	font-size: 110%;
+	margin-top: 10px;
 	color: $articulo-me-gusta;	
 }
 
@@ -53,7 +61,7 @@
 }
 
 .autor-comentarios {
-	float: right;
+	float: right;	
 }
 
 .icono-fecha-publicacion {
@@ -65,14 +73,7 @@ video {
   height: auto   !important;
 }
 
-/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/
-.articulo-comentarios
-{
-	margin: 10px;
+.separador {
+	margin-bottom: 20px;
 }
-
-#articulo_comentario {
-	margin: 0px 0px 10px 0px;
-	border-bottom: 1px solid $color-primary-6;
-}
-/*************** COMENTARIO DE UN ARTÍCULO EN LA PÁGINA DE DETALLE ********************************/
+/*************** LISTADO DE ARTÍCULOS ********************************/

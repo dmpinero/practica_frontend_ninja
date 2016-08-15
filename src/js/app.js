@@ -1,3 +1,5 @@
+global.jQuery = require('jquery');
+require('bootstrap');
 require('./cabecera');					 // Eventos del menú de la cabecera
 require('./articulo');					 // Eventos del artículo
 require('./logo-enlace'); 				 // Hiperenlace a página listado-articulos.html al hacer click en el logo

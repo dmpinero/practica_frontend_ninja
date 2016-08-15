@@ -8,7 +8,8 @@ $(document).ready(function() {
 	{
 		var id_articulo = 'articulo' + i + '-me-gusta';
 		var meGustaElemento = " "+ getMegusta(id_articulo);	
-		$('#' + id_articulo).text(meGustaElemento);
+		//$('#' + id_articulo).text(meGustaElemento);
+		$('#' + 'texto-' + id_articulo).text(meGustaElemento);
 	}
  });
 
@@ -25,7 +26,7 @@ function getMegusta(elemento)
 		return total_me_gusta;
 	}	
 	else { // El navegador no soporta Web Storage
-		console.log("Este navegador no soporta Web Storage");
+		//console.log("Este navegador no soporta Web Storage");
 		return -1;
 	}	
 }

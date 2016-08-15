@@ -16,29 +16,42 @@ var imagemin = require('gulp-imagemin');
 var
     source = 'src/',
     dest = 'dist/';
-    
+    img_out = dest + 'img/';
+
+var js = {
+    js_out: dest + 'js/',
+    js_file: source + '/js/app.js'
+};
+
+var video = {
+    source: [source + 'video/*.*'],
+    dest: dest + 'video/'
+};
+
 // Bootstrap scss source
 var bootstrapSass = {
-        in: './node_modules/bootstrap-sass/'
-    };
+    in: './node_modules/bootstrap-sass/'
+};
 
 // Bootstrap fonts source
 var fonts = {
-        in: [source + 'fonts/*.*', bootstrapSass.in + 'assets/fonts/**/*'],
-        out: dest + 'fonts/'
-    };
+    in: [source + 'fonts/*.*', bootstrapSass.in + 'assets/fonts/**/*'],
+    out: dest + 'fonts/'
+};
 
 // HTML source
 var html = {
-        in: [source + '*.html'],
-        out: dest,
-        watch: [source + '*.html']
-    };
+    in: [source + '*.html'],
+    out: dest,
+    watch: [source + '*.html']
+};
 
 // Our scss source folder: .scss fileshtml
 var scss = {
     in: source + 'scss/style.scss',
     out: dest + 'css/',
+    img_in: source + 'scss/img/**/*',
+    img_out: 'dist/css/img/',
     watch: source + 'scss/**/*',
     sassOpts: {
         outputStyle: 'nested',
@@ -52,10 +65,10 @@ var scss = {
 var jsFiles = ["src/js/*.js", "src/js/**/*.js"];
 
 // Ruta de las imágenes
-var imageDirs = ["src/img/*"];
+var imageDirs = ["src/img/*","src/scss/img/*"];
 
 // Definimos tarea por defecto
-gulp.task("default", ["concat-js", "html", "fonts", "compile-sass", "assets-optimize-images"], function(){
+gulp.task("default", ["concat-js", "html", "fonts", "video", "css_img", "compile-sass", "assets-optimize-images"], function(){
     // iniciar BrowserSync
     browserSync.init({
         //server: "./", // levanta servidor web en la carpeta actual
@@ -80,7 +93,7 @@ gulp.task("default", ["concat-js", "html", "fonts", "compile-sass", "assets-opti
 
 // Definimos tarea para compilar SASS
 gulp.task("concat-js", function(){
-    gulp.src("src/js/app.js")
+    gulp.src(js.js_file)
     .pipe(sourcemaps.init()) // comenzamos la captura de sourcemaps
     .pipe(tap(function(file){ // tap nos permite ejecutar un código por cada fichero seleccionado en el paso anterior
         file.contents = browserify(file.path).bundle(); // pasamos el archivo por browserify para importar los require
@@ -88,7 +101,7 @@ gulp.task("concat-js", function(){
     .pipe(buffer()) // convertir cada archivo en un stream
     .pipe(uglify()) // minifica el javascript
     .pipe(sourcemaps.write('./')) // escribimos los sourcemaps
-    .pipe(gulp.dest("dist/js/")) // guardamos el archivo en dist/js
+    .pipe(gulp.dest(js.js_out)) // guardamos el archivo en dist/js
     .pipe(notify({
         title: "SASS",
         message: "Concatenated!"
@@ -128,11 +141,23 @@ gulp.task("compile-sass", function(){
 gulp.task("assets-optimize-images", function(){
     gulp.src(imageDirs)
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/img/')); // Ruta de las imágenes optimizadas
+    .pipe(gulp.dest(img_out)); // Ruta de las imágenes optimizadas
 });
 
 // Definimos tarea para copiar archivos html a carpeta destino 
 gulp.task('html', function () {
     gulp.src(html.in)
     .pipe(gulp.dest(html.out));
+});
+
+// Definimos tarea para copiar archivos de video a carpeta destino 
+gulp.task('video', function () {
+    gulp.src(video.source)
+    .pipe(gulp.dest(video.dest));
+});
+
+// Definimos tarea para copiar archivos de imágenes de css
+gulp.task('css_img', function () {
+    gulp.src(scss.img_in)
+    .pipe(gulp.dest(scss.img_out));
 });

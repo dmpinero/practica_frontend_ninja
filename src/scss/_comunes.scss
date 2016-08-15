@@ -2,6 +2,7 @@ body {
 
     font-family: $main-font-family;
     font-size: $font-size-normal;
+    background-color: $color-parrafo-resumen;
 
     @include if-is-tablet {
         font-size: $font-size-tablet;
@@ -14,40 +15,16 @@ body {
 article {
     border-bottom: 1px solid $separador-articulos;
     margin-bottom: 20px;
-    margin-top: 10px;
 }
 
 img {
     max-width: 100%;
 }
 
-section {
-    margin: 10px;
-}
-
-.logo {
-    color: $logo-color;
-    cursor: pointer;
-    @include if-is-tablet {
-        font-size: 180%;
-    }
-    @include if-is-desktop {
-        font-size: 250%;
-    }
-}
-
 h2 {
-    font-size: 180%;
+    color: $color-primary-4;
+    font-size: 160%;
     word-spacing: 2px;
     text-align: center;
-    margin: 30px 10px 30px 10px;
     letter-spacing: 1px; /* Espaciado entre letras */
-}
-
-h2:after {
-    display: block;
-    height: 2px;
-    background-color: $color-primary-0;
-    content: " ";
-    margin-top: 30px;
 }

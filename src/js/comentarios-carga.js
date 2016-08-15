@@ -18,7 +18,7 @@ function pintarComentarios(response) {
 		    var apellidos = utils.escapeHTML(comentario.apellidos || "") ; // Si el atributo es undefined se reemplaza por la cadena vacía 
 		    var email = utils.escapeHTML(comentario.email || ""); // Si el atributo es undefined se reemplaza por la cadena vacía 
 		    var comentario = utils.escapeHTML(comentario.comentario || ""); // Si el atributo es undefined se reemplaza por la cadena vacía			        
-			html += '<div class="row" id="articulo_comentario">';
+			html += '<div class="row articulo_comentario">';
 			html += '<div class="col-sm-2 text-center">';
 			html += '<img src="img/bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">';
 			html += '</div>';

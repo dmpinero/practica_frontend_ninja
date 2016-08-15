@@ -17,8 +17,8 @@ $('#comentario').on("keyup", function() {
 
     // Cambiar estilo de las etiquetas
     // Si nº de palabras >= 100. Verde
-    // Si nº de palabras >= 50 y < 100. Naranja
-    // Si nº de palabras <= 10. Rojo
+    // Si nº de palabras >= 10 y < 100. Naranja
+    // Si nº de palabras < 10. Rojo
     var palabras_restantes = $('#palabras_restantes')[0].innerHTML;
     if (palabras_restantes < 10) {
     	$('#palabras_restantes').removeClass("menos-cien-palabras");

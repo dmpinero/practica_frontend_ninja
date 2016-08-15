@@ -10,7 +10,8 @@
 }
 
 .comentarios-formulario-alta {
-     margin: 10px;
+    background-image: url(img/contacto.jpg);
+    background-attachment: fixed;     
 }
 
 /* Botón de envío del formulario */
@@ -22,4 +23,42 @@
     -webkit-border-radius: 200px;
     -moz-border-radius: 200px;
     border-radius: 200px;
+}
+
+.titulo-alta-comentario {
+    color: $color-blanco;
+    margin-bottom: 20px;
+    @include if-is-desktop {
+        font-weight: 300;
+        font-size: 180%;
+    }    
+}
+
+.alta-comentario {
+    color: $color-blanco;
+    @include if-is-desktop {
+        font-weight: 300;  
+    }    
+}
+
+input[type=submit] {
+    display: inline-block; /* Permite establecer padding y margin como si fueran elementos de tipo block */
+    padding: 10px 30px;
+    font-weight: 300px;
+    text-decoration: none; /* Eliminar subrayado por debajo que tiene por defecto el enlace <a> en HTML*/
+    border-radius: 200px; /* Botones redondeados */
+    color: #fff; /* Color de la fuente */
+    transition: background-color 0.2s, border 0.2s, color 0.2s; /* Tiempo que tarda en cambiar de color cuando pasa el ratón */
+    cursor: pointer;
+    border: 1px solid $color-primary-0;
+    background-color: $color-primary-0;
+    margin-right: 15px;    
+}
+
+.campo-formulario {
+    margin-bottom: 5px;
+    border-radius: 3px;
+    @include if-is-desktop {
+        font-weight: 300;  
+    }    
 }
